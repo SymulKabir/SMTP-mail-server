@@ -10,7 +10,7 @@ const server = new SMTPServer({
   authOptional: true,
   onAuth(auth, session, callback) {
     const { username, password } = auth;
-    if (username === "symul@micple.com" && password === "ysadfswe3r") {
+    if (username === "symul@somacharnews.com" && password === "ysadfswe3r") {
       return callback(null, { user: username });
     } else {
       return callback(new Error("Invalid username or password"));
