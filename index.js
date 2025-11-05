@@ -11,7 +11,7 @@ const server = new SMTPServer({
   onAuth(auth, session, callback) {
     console.log("Hello from onAut section")
     const { username, password } = auth;
-    if (username === "symul@micple.com" && password === "ysadfswe3r") {
+    if (username === "symul@somacharnews.com" && password === "YOUR_PASSWORD") {
       return callback(null, { user: username });
     } else {
       return callback(new Error("Invalid username or password"));
