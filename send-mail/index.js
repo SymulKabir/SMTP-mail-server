@@ -62,7 +62,7 @@ const sendMailDirect = async (from, to, subject, message) => {
 const main = async () => {
   await sendMailDirect(
     "symul@somacharnews.com",
-    "someone@gmail.com",
+    "saimonpranta@gmail.com",
     "Test Mail from Node.js MX",
     "Hello! This is a test message sent directly from my Node.js SMTP sender."
   );
