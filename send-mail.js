@@ -26,7 +26,7 @@ const transporter = nodemailer.createTransport({
 
 const mailOptions = {
   from: '"Symul" <symul@somacharnews.com>',
-  to: "saimonpranta@gmail.com",
+  to: "saimonpranta@somacharnews.com",
   subject: "Professional Mail Test",
   text: "Hello! This is a professional test from my Node.js mail server.",
   html: "<p>Hello! This is a <b>professional test</b> from my Node.js mail server.</p>",
