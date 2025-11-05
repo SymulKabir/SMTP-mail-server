@@ -2,7 +2,7 @@ const dns = require("dns");
 const net = require("net");
 const tls = require("tls");
 const fs = require("fs");
-const { DKIMSign } = require("nodemailer/lib/dkim");
+const { createSigner } = require("nodemailer/lib/dkim");
 
 const resolveMxAsync = (domain) =>
   new Promise((resolve, reject) => {
@@ -58,7 +58,8 @@ const sendMail = async ({ from, to, subject, body }) => {
               });
             });
 
-          const dkimSigner = new DKIMSign({
+          // ✅ Create DKIM signer
+          const signer = createSigner({
             domainName: "somacharnews.com",
             keySelector: "default",
             privateKey: fs.readFileSync(
@@ -69,14 +70,13 @@ const sendMail = async ({ from, to, subject, body }) => {
           });
 
           const messageBody = `Subject: ${subject}\r\nFrom: ${from}\r\nTo: ${to}\r\nDate: ${new Date().toUTCString()}\r\n\r\n${body}\r\n`;
-          const dkimHeader = dkimSigner.sign(messageBody);
-          const message = `${dkimHeader}\r\n${messageBody}`;
+          const signedMessage = signer.sign(messageBody);
 
           await writeTLS(`EHLO mail.somacharnews.com`);
           await writeTLS(`MAIL FROM:<${from}>`);
           await writeTLS(`RCPT TO:<${to}>`);
           await writeTLS(`DATA`);
-          await writeTLS(`${message}\r\n.`);
+          await writeTLS(`${signedMessage}\r\n.`);
           await writeTLS(`QUIT`);
 
           console.log("✅ Mail successfully sent!");
@@ -97,10 +97,14 @@ const sendMail = async ({ from, to, subject, body }) => {
     await sendMail({
       from: "symul@somacharnews.com",
       to: "saimonpranta@gmail.com",
-      subject: "Professional Node.js Mail Test",
-      body: "Hello! This email was sent directly from mail.somacharnews.com using port 25 with STARTTLS and DKIM.",
+      subject: "✅ Node.js Direct MX Test (DKIM + TLS)",
+      body: "Hello! This is a real SMTP test sent directly to Gmail with DKIM and STARTTLS.",
     });
   } catch (err) {
     console.error("❌ Error:", err);
   }
 })();
+
+
+
+// 
