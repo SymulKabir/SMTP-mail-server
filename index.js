@@ -3,7 +3,7 @@ const { simpleParser } = require("mailparser");
 const fs = require("fs");
 const axios = require("axios");
 const FormData = require("form-data"); // Import FormData module
-const { PORT, BACKEND_URL } = require("./src/shared/constants/constant");
+const {  BACKEND_URL } = require("./src/shared/constants/constant");
 
 const server = new SMTPServer({
   allowInsecureAuth: true,
@@ -97,7 +97,7 @@ const server = new SMTPServer({
     });
   },
 });
-
+const PORT = 25;
 // Start the SMTP server
 server.listen(PORT, () => {
   console.log(`Mail server is listening on PORT: ${PORT}`);

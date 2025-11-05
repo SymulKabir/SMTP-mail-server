@@ -1,23 +1,27 @@
-const nodemailer = require("nodemailer");
+import nodemailer from 'nodemailer'
 
-const transporter = nodemailer.createTransport({
-  host: "smtp.hostinger.com", // Hostinger SMTP host
-  port: 587,
-  secure: false,
-  auth: {
-    user: "symul@somacharnews.com",
-    pass: "ysadfswe3r",
-  },
-});
+const sendMail = async () => {
+  const transporter = nodemailer.createTransport({
+    host: 'mail.somacharnews.com',
+    port: 587, // or 465 if you configured SSL
+    secure: false, // true for port 465
+    auth: {
+      user: 'test@somacharnews.com', // change to your real mailbox
+      pass: 'your_password_here',    // password for that mailbox
+    },
+    tls: {
+      rejectUnauthorized: false,
+    },
+  })
 
-const mailOptions = {
-  from: "symul@somacharnews.com",
-  to: "saimonpranta@gmail.com",
-  subject: "Test Email",
-  text: "Hello! This is a test email from production.",
-};
+  const info = await transporter.sendMail({
+    from: 'test@somacharnews.com',
+    to: 'someone@gmail.com',
+    subject: 'Test Email from somacharnews.com',
+    text: 'This is a test email sent from my Node.js mail server.',
+  })
 
-transporter.sendMail(mailOptions, (err, info) => {
-  if (err) console.error("Error sending email:", err);
-  else console.log("Email sent:", info.response);
-});
+  console.log('Message sent: %s', info.messageId)
+}
+
+sendMail().catch(console.error)
