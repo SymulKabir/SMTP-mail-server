@@ -80,15 +80,15 @@ const server = new SMTPServer({
         }
 
         // Send the parsed email data to the backend
-        const response = await axios.post(
-          `${BACKEND_URL}/mail/save-mail`,
-          formData,
-          {
-            headers: formData.getHeaders(),
-          }
-        );
+        // const response = await axios.post(
+        //   `${BACKEND_URL}/mail/save-mail`,
+        //   formData,
+        //   {
+        //     headers: formData.getHeaders(),
+        //   }
+        // );
 
-        console.log("Email saved successfully:", response.data);
+        // console.log("Email saved successfully:", response.data);
         callback(); // Signal that the email was processed
       } catch (error) {
         console.error("Error in processing email:", error);
