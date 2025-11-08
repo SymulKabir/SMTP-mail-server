@@ -4,9 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js",
-    "sendmail": "node src/shared/functions/sentMail.js",
-    "build": "node index.js"
+    "dev-mail-receiver": "nodemon receive-mail/index.js",
+    "dev-mail-sender": "nodemon send-mail/smtp-server-custom.js",
+    "dev-send-mail": "nodemon send-mail/send-mail.js",
+    
+    "mail-receiver": "node receive-mail/index.js",
+    "mail-sender": "node send-mail/smtp-server-custom.js", 
+    "send-mail": "node send-mail/send-mail.js"
   },
   "keywords": [],
   "author": "",
