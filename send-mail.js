@@ -4,11 +4,11 @@ const transporter = nodemailer.createTransport({
   host: '127.0.0.1', // your Node.js SMTP server
   port: 25,
   secure: false,
-  auth: {
-    user: 'symul@somacharnews.com',
-    pass: 'YOUR_PASSWORD'
+  tls: {
+    rejectUnauthorized: false
   }
 });
+
 
 transporter.sendMail({
   from: '"Symul" <symul@somacharnews.com>',
