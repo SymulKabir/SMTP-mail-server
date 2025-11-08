@@ -2,7 +2,7 @@ const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport({
   host: '127.0.0.1', // your Node.js SMTP server
-  port: 25,
+  port: 26,
   secure: false,
   tls: {
     rejectUnauthorized: false

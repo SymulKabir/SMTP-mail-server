@@ -69,5 +69,5 @@ const server = new SMTPServer({
   }
 });
 
-server.listen(25, () => console.log('🚀 Custom SMTP server listening on port 25'));
+server.listen(26, () => console.log('🚀 Custom SMTP server listening on port 25'));
 server.on('error', (err) => console.error('⚠️ SMTP Server error:', err));
