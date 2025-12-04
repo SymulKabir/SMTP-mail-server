@@ -135,6 +135,14 @@ Type: TXT
 Host: _dmarc
 Value: "v=DMARC1; p=none; rua=mailto:postmaster@somacharnews.com"
 ```
+Run to verify:
+```bash
+dig TXT _dmarc.somacharnews.com +short
+```
+You should see:
+```txt
+"v=DMARC1; p=none; rua=mailto:postmaster@somacharnews.com"
+```
 
 #### Set PTR Record (Reverse DNS)
 You cannot set PTR in your DNS panel — it must be done by your server provider or VPS host (e.g., DigitalOcean, AWS, Hetzner, etc.).
