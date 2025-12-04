@@ -68,8 +68,6 @@ dig MX somacharnews.com +short
 ```
 Your can see `10 mail.somacharnews.com` like this result
 
-
-
 ### b) A Record
 Maps your mail subdomain to your server’s IP.
 
@@ -79,6 +77,12 @@ Host: mail
 Value: <YOUR_SERVER_PUBLIC_IP>
 TTL: 3600
 ```
+Then Verify
+```bash
+dig A mail.somacharnews.com +short
+```
+Your can see `<YOUR_SERVER_PUBLIC_IP>` like this result
+
 
 ### c) SPF Record
 Authorizes your server to send emails.
