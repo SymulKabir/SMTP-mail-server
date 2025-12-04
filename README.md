@@ -120,6 +120,14 @@ Type: TXT
 Host: default._domainkey
 Value: "v=DKIM1; k=rsa; p=<YOUR_PUBLIC_KEY>"
 ```
+Then Verify
+```bash
+dig TXT default._domainkey.somacharnews.com +short
+```
+You should see something like:
+```txt
+"v=DKIM1; k=rsa; p=MIIBIjANBgkqh..."
+```
 
 #### DMARC Record (Optional)
 ```text
