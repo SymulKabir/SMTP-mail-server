@@ -61,7 +61,14 @@ Value: mail.somacharnews.com
 Priority: 10
 TTL: 3600
 
-``` 
+```
+Then Verify
+```bash
+dig MX somacharnews.com +short
+```
+Your can see `10 mail.somacharnews.com` like this result
+
+
 
 ### b) A Record
 Maps your mail subdomain to your server’s IP.
